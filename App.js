@@ -16,7 +16,7 @@ export default class App extends React.Component {
                 </Text>
                 <Text>Changes you make will automatically reload.</Text>
                 <Text>Shake your phone to open the developer menu.</Text>
-                <Ionicons name="ios-pizza" color="red" />
+                <Ionicons name="ios-pizza" color="red" size={200} />
             </View>
         );
     }
