@@ -45,6 +45,7 @@ export function calculateDirection(heading) {
     return direction;
 }
 
+// RETURNS "2018-07-17"
 export function timeToString(time = Date.now()) {
     const date = new Date(time);
     const todayUTC = new Date(
