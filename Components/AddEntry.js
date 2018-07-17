@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 import { getMetricMetaInfo } from "../utils/helpers";
 import UdaciSliders from "./UdaciSliders";
 import UdaciSteppers from "./UdaciSteppers";
-import { Slider } from "react-native-gesture-handler";
+import DateHeader from "./DateHeader";
 
 export default class AddEntry extends Component {
     state = {
@@ -40,6 +40,7 @@ export default class AddEntry extends Component {
         const metaInfo = getMetricMetaInfo();
         return (
             <View>
+                <DateHeader date={new Date().toLocaleDateString()} />
                 // key is bike, run... as it loops // rest is an Object
                 {Object.keys(metaInfo).map(key => {
                     const { getIcon, type, ...rest } = metaInfo[key];
