@@ -132,7 +132,7 @@ class AddEntry extends Component {
                     const { getIcon, type, ...rest } = metaInfo[key];
                     const value = this.state[key];
                     return (
-                        <View key={key}>
+                        <View key={key} style={styles.row}>
                             {getIcon()}
                             {type === "sliders" ? (
                                 <UdaciSliders
@@ -160,9 +160,14 @@ class AddEntry extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex:1,
+        flex: 1,
         padding: 20,
         backgroundColor: white
+    },
+    row: {
+        flexDirection: "row",
+        flex: 1,
+        alignItems: "center"
     },
     iosSubmitBtn: {
         backgroundColor: purple,
