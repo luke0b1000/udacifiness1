@@ -115,10 +115,10 @@ class AddEntry extends Component {
         // this.props.alreadyLogged = true;
         if (this.props.alreadyLogged) {
             return (
-                <View>
-                    <Ionicons name="ios-happy-outline" size={100} />
+                <View style={styles.center}>
+                    <Ionicons name={Platform.OS === 'ios' ? "ios-happy-outline" : 'md-happy'} size={100} />
                     <Text>You already logged your information for today</Text>
-                    <TextButton onPress={this.reset}>Reset</TextButton>
+                    <TextButton style={{padding: 10}} onPress={this.reset}>Reset</TextButton>
                 </View>
             );
         }
@@ -192,6 +192,13 @@ const styles = StyleSheet.create({
         color: white,
         fontSize: 22,
         textAlign: "center"
+    },
+    center: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 30,
+        marginRight: 30,
     }
 });
 
