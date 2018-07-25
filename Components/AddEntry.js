@@ -20,6 +20,7 @@ import { submitEntry, removeEntry } from "../utils/api";
 import { connect } from "react-redux";
 import { addEntry } from "../actions";
 import { white, purple } from "../utils/colors";
+import { NavigationActions } from "react-navigation";
 
 function SubmitBtn({ onPress }) {
     return (
@@ -88,6 +89,7 @@ class AddEntry extends Component {
         }));
 
         // Navigate to home screen
+        this.toHome();
 
         // Save to 'DB'
         submitEntry({ key, entry });
@@ -105,9 +107,17 @@ class AddEntry extends Component {
         );
 
         // Route to home
+        this.toHome();
 
         // Update the DB
         removeEntry(key);
+    };
+    toHome = () => {
+        this.props.navigation.dispatch(
+            NavigationActions.back({
+                key: "AddEntry"
+            })
+        );
     };
     render() {
         const metaInfo = getMetricMetaInfo();
@@ -116,9 +126,18 @@ class AddEntry extends Component {
         if (this.props.alreadyLogged) {
             return (
                 <View style={styles.center}>
-                    <Ionicons name={Platform.OS === 'ios' ? "ios-happy-outline" : 'md-happy'} size={100} />
+                    <Ionicons
+                        name={
+                            Platform.OS === "ios"
+                                ? "ios-happy-outline"
+                                : "md-happy"
+                        }
+                        size={100}
+                    />
                     <Text>You already logged your information for today</Text>
-                    <TextButton style={{padding: 10}} onPress={this.reset}>Reset</TextButton>
+                    <TextButton style={{ padding: 10 }} onPress={this.reset}>
+                        Reset
+                    </TextButton>
                 </View>
             );
         }
@@ -195,10 +214,10 @@ const styles = StyleSheet.create({
     },
     center: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
         marginLeft: 30,
-        marginRight: 30,
+        marginRight: 30
     }
 });
 
